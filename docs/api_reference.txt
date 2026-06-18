@@ -1,0 +1,577 @@
+Cat Engine API Reference
+
+# Graphics
+graphics.clear(r, g, b, a)
+graphics.setColor(r, g, b, a)
+graphics.drawRect(x, y, w, h, r, g, b, a)
+graphics.drawCircle(x, y, radius, r, g, b, a)
+graphics.drawLine(x1, y1, x2, y2, r, g, b, a)
+graphics.drawTriangle(x1, y1, x2, y2, x3, y3, r, g, b, a)
+graphics.drawArc(mode, x, y, radius, startAngle, sweepAngle, segments, r, g, b, a)
+graphics.drawEllipse(mode, x, y, rx, ry, segments, r, g, b, a)
+graphics.drawPolygon(vertices_table, r, g, b, a)
+graphics.drawPolyLine(vertices_table, r, g, b, a)
+graphics.drawTexturedTriangle(texture, x1, y1, u1, v1, x2, y2, u2, v2, x3, y3, u3, v3, r, g, b, a)
+
+graphics.loadTexture(path)
+graphics.drawTexture(texture, x, y, w, h, r, g, b, a)
+graphics.drawTexture(texture, quad, x, y, dstW, dstH, r, g, b, a)
+graphics.draw(texture, x, y, rotation, scaleX, scaleY, originX, originY)
+graphics.draw(texture, quad, x, y, rotation, scaleX, scaleY, originX, originY)
+graphics.draw9Slice(texture, x, y, w, h, marginTop, marginBottom, marginLeft, marginRight, r, g, b, a)
+graphics.setDefaultFilter(minFilter, magFilter, anisotropy)
+graphics.newQuad(x, y, w, h, sw, sh)
+
+texture:drawQuad(x, y, srcX, srcY, srcW, srcH, dstW, dstH, r, g, b, a)
+texture:draw(x, y, w, h, r, g, b, a)
+texture:draw(quad, x, y, dstW, dstH, r, g, b, a)
+texture:draw9Slice(x, y, w, h, marginTop, marginBottom, marginLeft, marginRight, r, g, b, a)
+texture:getWidth()
+texture:getHeight()
+texture:setFilter(min, mag)
+texture:setWrap(u, v)
+
+graphics.loadFont(path, size)
+graphics.print(font, text, x, y, r, g, b, a)
+graphics.printOutline(font, text, x, y, outlineWidth, r, g, b, a, out_r, out_g, out_b, out_a)
+graphics.printShadow(font, text, x, y, shadowX, shadowY, r, g, b, a, sh_r, sh_g, sh_b, sh_a)
+graphics.measureText(font, text)
+
+font:print(text, x, y, r, g, b, a)
+font:printOutline(text, x, y, outlineWidth, r, g, b, a, out_r, out_g, out_b, out_a)
+font:printShadow(text, x, y, shadowX, shadowY, r, g, b, a, sh_r, sh_g, sh_b, sh_a)
+font:measure(text)
+
+graphics.getWidth()
+graphics.getHeight()
+graphics.setDepthTest(enable)
+graphics.clearDepth()
+graphics.push()
+graphics.pop()
+graphics.newCanvas(w, h)
+graphics.setCanvas(canvas)
+graphics.setScissor(x, y, w, h)
+graphics.clearScissor()
+graphics.translate(tx, ty)
+graphics.rotate(angle)
+graphics.scale(sx, sy)
+
+graphics.newShader(vertexCode, fragmentCode)
+graphics.setShader(shader)
+shader:sendInt(name, value)
+shader:sendFloat(name, value)
+shader:sendMatrix(name, value)
+shader:sendTexture(name, texture)
+
+graphics.newFastBatch(max_sprites)
+batch:add(x, y, w, h, r, g, b, a, vx, vy)
+batch:update(dt, screenW, screenH)
+batch:draw()
+batch:clear()
+
+# Audio
+audio.loadSound(path)
+audio.setGlobalVolume(volume)
+audio.getGlobalVolume()
+audio.setListenerPosition(x, y, z)
+audio.setListenerVelocity(x, y, z)
+audio.setListenerDirection(x, y, z)
+
+sound:play()
+sound:pause()
+sound:stop()
+sound:setVolume(volume)
+sound:getVolume()
+sound:setLooping(loop)
+sound:isLooping()
+sound:isPlaying()
+sound:setPitch(pitch)
+sound:getPitch()
+sound:setPan(pan)
+sound:getPan()
+sound:getLength()
+sound:getPosition()
+sound:setPosition(seconds)
+sound:setFade(fade_in, fade_out)
+sound:setSpatialPosition(x, y, z)
+sound:setSpatialPositioning(enabled)
+sound:setVelocity(x, y, z)
+sound:setDirection(x, y, z)
+
+# Filesystem
+fs.basePath
+fs.savePath
+fs.read(path)
+fs.write(path, data)
+fs.exists(path)
+fs.isDirectory(path)
+fs.mkdir(path)
+fs.list(path)
+fs.remove(path)
+fs.load(path)
+fs.append(path, data)
+fs.isFile(path)
+fs.getSize(path)
+fs.getExtension(path)
+fs.getFileName(path)
+fs.getDirectory(path)
+fs.copy(src, dst)
+fs.move(src, dst)
+fs.rename(src, dst)
+fs.getModifiedTime(path)
+fs.readLines(path)
+fs.writeLines(path, lines)
+fs.readBytes(path)
+fs.writeBytes(path, bytes)
+fs.createFile(path)
+fs.clearFile(path)
+fs.getFreeSpace()
+fs.getTotalSpace()
+fs.isSymlink(path)
+fs.makeSymlink(target, linkpath)
+fs.isReadable(path)
+fs.isWritable(path)
+fs.zip(folder, zipfile)
+fs.unzip(zipfile, destfolder)
+
+# Math
+math.distance(x1, y1, x2, y2)
+math.distanceSquared(x1, y1, x2, y2)
+math.dist2(x1, y1, x2, y2)
+math.clamp(value, min, max)
+math.lerp(a, b, t)
+math.sign(val)
+math.angle(x1, y1, x2, y2)
+math.normalize(x, y)
+math.dot(x1, y1, x2, y2)
+math.cross(x1, y1, x2, y2)
+math.direction(angle, length)
+math.round(val)
+math.fract(val)
+math.lerpAngle(a, b, t)
+math.smoothstep(min, max, val)
+math.remap(val, in_min, in_max, out_min, out_max)
+math.map(val, in_min, in_max, out_min, out_max)
+math.pingpong(val, max)
+math.wrap(val, min, max)
+math.snap(val, step)
+math.approach(val, target, max_delta)
+math.moveTowards(val, target, max_delta)
+math.length(x, y)
+math.packFloatArray(table)
+math.packUShortArray(table)
+math.packUIntArray(table)
+math.triangulate(polygon_points)
+
+
+math_ext -- Alias complex math extensions if available
+
+# Vector2
+vec2(x, y)
+v:length()
+v:normalize()
+v:dot(v2)
+v:addInPlace(v2)
+v:subInPlace(v2)
+v:mulInPlace(v2)
+v:divInPlace(v2)
+
+
+vec2 internally supports metamethods: __add, __sub, __mul, __div, __unm, __eq, __tostring, __newindex
+
+math.mat4()
+mat:identity()
+mat:translate(tx, ty, tz)
+mat:scale(sx, sy, sz)
+mat:rotateX(angle)
+mat:rotateY(angle)
+mat:rotateZ(angle)
+mat:transformPoint(x, y, z)
+mat:ortho(left, right, bottom, top, near, far)
+mat:perspective(fovY, aspect, near, far)
+
+math.noise(x, y, z)
+math.fbm(x, y, octaves, lacunarity, gain)
+math.random(min, max)
+math.randomNormal(stddev, mean)
+math.setRandomSeed(seed)
+math.getRandomSeed()
+math.newRandomGenerator()
+math.chance(probability)
+math.randomWeighted(weightsTable)
+math.uuid()
+math.randomVector()
+math.newTransform()
+transform:apply(transform2)
+transform:clone()
+transform:inverse()
+transform:getMatrix()
+transform:setMatrix(m11, m12, ...)
+transform:setTransformation(x, y, angle, sx, sy, ox, oy, kx, ky)
+transform:translate(dx, dy)
+transform:rotate(angle)
+transform:scale(sx, sy)
+transform:shear(kx, ky)
+transform:reset()
+transform:transformPoint(x, y)
+transform:inverseTransformPoint(x, y)
+transform:isAffine2D()
+
+# Physics
+physics.newSpace()
+space:step(dt)
+space:setGravity(x, y)
+space:addBody(body)
+space:addShape(shape)
+space:addConstraint(constraint)
+space:removeBody(body)
+space:removeShape(shape)
+space:removeConstraint(constraint)
+space:addCollisionHandler(typeA, typeB, begin, pre, post, separate)
+space:raycastFirst(x1, y1, x2, y2, radius, filterGroup, filterCategories, filterMask)
+space:raycast(x1, y1, x2, y2, radius, filterGroup, filterCategories, filterMask)
+space:pointQueryNearest(x, y, maxDistance, filterGroup, filterCategories, filterMask)
+space:pointQuery(x, y, maxDistance, filterGroup, filterCategories, filterMask)
+space:bbQuery(left, top, right, bottom, filterGroup, filterCategories, filterMask)
+space:shapeQuery(shape)
+
+physics.momentForCircle(m, r1, r2, ox, oy)
+physics.momentForBox(m, w, h)
+physics.momentForSegment(m, ax, ay, bx, by, r)
+physics.momentForPoly(m, verts, r)
+
+physics.newBody(mass, moment)
+physics.newKinematicBody()
+physics.newStaticBody()
+body:setPosition(x, y)
+body:getPosition()
+body:setAngle(angle)
+body:getAngle()
+body:setVelocity(vx, vy)
+body:getVelocity()
+body:setAngularVelocity(w)
+body:getAngularVelocity()
+body:setMass(mass)
+body:getMass()
+body:setMoment(moment)
+body:getMoment()
+body:applyForce(fx, fy)
+body:applyImpulse(ix, iy)
+body:setTorque(torque)
+
+physics.newCircleShape(body, radius, offset_x, offset_y)
+physics.newBoxShape(body, width, height, radius)
+physics.newSegmentShape(body, ax, ay, bx, by, radius)
+physics.newPolyShape(body, vertices, radius)
+shape:setFriction(friction)
+shape:setElasticity(elasticity)
+shape:setSensor(isSensor)
+shape:setCollisionType(typeId)
+shape:setMass(mass)
+shape:getMass()
+shape:setDensity(density)
+shape:getDensity()
+shape:setFilter(group, categories, mask)
+
+physics.newPinJoint(bodyA, bodyB, anchorA_x, anchorA_y, anchorB_x, anchorB_y)
+physics.newPivotJoint(bodyA, bodyB, pivot_x, pivot_y)
+physics.newSlideJoint(bodyA, bodyB, anchorA_x, anchorA_y, anchorB_x, anchorB_y, min, max)
+physics.newGrooveJoint(bodyA, bodyB, groove_a_x, groove_a_y, groove_b_x, groove_b_y, anchorB_x, anchorB_y)
+physics.newDampedSpring(bodyA, bodyB, anchorA_x, anchorA_y, anchorB_x, anchorB_y, restLength, stiffness, damping)
+physics.newDampedRotarySpring(bodyA, bodyB, restAngle, stiffness, damping)
+physics.newRotaryLimitJoint(bodyA, bodyB, min, max)
+physics.newRatchetJoint(bodyA, bodyB, phase, ratchet)
+physics.newGearJoint(bodyA, bodyB, phase, ratio)
+physics.newSimpleMotor(bodyA, bodyB, rate)
+constraint:setMaxForce(maxForce)
+constraint:setErrorBias(errorBias)
+constraint:setMaxBias(maxBias)
+constraint:setCollideBodies(collide)
+
+
+-- Physics Table Output properties / Constraints Internal values:
+-- point_x, point_y, normal_x, normal_y, gradient_x, gradient_y, pointA_x, pointA_y, pointB_x, pointB_y, points, alpha
+
+# Input
+input.wasBackPressed()
+input.startTextInput(text)
+input.stopTextInput()
+input.getText()
+input.setText(text)
+input.getKeyboardHeight()
+
+input.getAccelerometer()
+input.getGyroscope()
+input.getPinchScale()
+input.getRotationAngle()
+input.getFlingVelocity()
+input.wasDoubleTapped()
+input.wasSwiped()
+
+input.isTouched()
+input.isJustTouched()
+input.isTouchReleased()
+input.getTouchX()
+input.getTouchY()
+input.getTouchPressure()
+input.getTouches()
+input.getTouch(id)
+
+
+-- Touch/Input output properties:
+-- deltaX, deltaY, timeActive, pressure
+
+# System
+sys (Alias for system)
+system.parse
+system.exit()
+system.getDensity()
+system.getScreenWidth()
+system.getScreenHeight()
+system.getFPS()
+system.getTime()
+system.write(key, val)
+system.read(key)
+system.cancelNotification(id)
+system.scheduleNotification(id, title, message, delay)
+system.hapticImpact(style)
+system.getLuaMemoryUsage()
+system.gcCollect()
+system.gcPause()
+system.gcResume()
+system.getDrawCalls()
+system.getDeltaTime()
+system.runAsync(func)
+system.log(message)
+system.openURL(url)
+system.setOrientation(orientation)
+system.setFullscreen(isFullscreen)
+system.vibrate(ms)
+system.pickFile()
+system.getPickedFile()
+system.pickColor()
+system.getPickedColor()
+system.showKeyboard()
+system.hideKeyboard()
+system.getKeyboardHeight()
+
+# Particles
+particles.newEmitter(maxParticles)
+emitter:update(dt)
+emitter:draw()
+emitter:start()
+emitter:stop()
+emitter:reset()
+emitter:emit(count)
+emitter:setPosition(x, y)
+emitter:setTexture(texture)
+emitter:setEmissionRate(rate)
+emitter:setLifespan(min, max)
+emitter:setSpeed(min, max)
+emitter:setAngle(min, max)
+emitter:setGravity(x, y)
+emitter:setSize(startMin, startMax, endMin, endMax)
+emitter:setColor(r, g, b, a, endR, endG, endB, endA)
+emitter:setRotationSpeed(min, max)
+emitter:setDamping(damping)
+emitter:setShapePoint()
+emitter:setShapeRect(w, h)
+emitter:setShapeCircle(radius)
+emitter:setAdditiveBlend(enable)
+emitter:setRadialAccel(min, max)
+emitter:setTangentAccel(min, max)
+emitter:getActiveCount()
+
+# Video
+video.load(options)
+
+video:play()
+video:pause()
+video:setVolume(volume)
+video:update(x, y, width, height, alpha)
+video:seek(seconds)
+video:getDuration()
+video:getCurrentTime()
+video:isPlaying()
+video:setSpeed(speed)
+video:destroy()
+
+# Clipboard
+Clipboard.copy(text)
+Clipboard.paste()
+
+# Async
+async.setTimeout(ms, callback)
+async.setInterval(ms, callback)
+async.clear(id)
+async.loadTextureBackground(path, callback)
+
+# Camera
+camera.setPosition(x, y)
+camera.getPosition()
+camera.setZoom(z)
+camera.getZoom()
+camera.setRotation(r)
+camera.getRotation()
+camera.setBounds(minX, minY, maxX, maxY)
+camera.clearBounds()
+camera.setDeadzone(w, h)
+camera.clearDeadzone()
+camera.setFollowLerp(lerp)
+camera.follow(tx, ty)
+camera.zoomAt(z, px, py)
+camera.shake(intensity, duration)
+camera.attach()
+camera.detach()
+camera.screenToWorld(sx, sy)
+camera.isPointVisible(px, py)
+camera.isRectVisible(rx, ry, rw, rh)
+
+# ECS
+ecs.createEntity()
+ecs.destroyEntity(id)
+ecs.addComponent(id, name, data)
+ecs.getComponent(id, name)
+ecs.disableEntity(id)
+ecs.enableEntity(id)
+ecs.isActive(id)
+
+entity:addComponent(name, data)
+entity:getComponent(name)
+entity:destroy()
+entity:disable()
+entity:enable()
+entity:isActive()
+
+# OpenGL (Low-Level)
+gl.clearColor(r, g, b, a)
+gl.clear(mask)
+gl.enable(state)
+gl.disable(state)
+gl.depthFunc(func)
+gl.blendFunc(sfactor, dfactor)
+gl.viewport(x, y, w, h)
+gl.createBuffer(is_element_array, array_vertices)
+gl.bindBuffer(target, buffer)
+gl.deleteBuffer(buffer)
+gl.bufferData(target, size, data, usage)
+gl.enableVertexAttribArray(index)
+gl.disableVertexAttribArray(index)
+gl.vertexAttribPointer(index, size, type, normalized, stride, offset)
+gl.useProgram(shader)
+gl.drawArrays(mode, first, count)
+gl.drawElements(mode, count, type, indices)
+
+
+gl.COLOR_BUFFER_BIT
+gl.DEPTH_BUFFER_BIT
+gl.DEPTH_TEST
+gl.CULL_FACE
+gl.BLEND
+gl.ARRAY_BUFFER
+gl.ELEMENT_ARRAY_BUFFER
+gl.STATIC_DRAW
+gl.DYNAMIC_DRAW
+gl.FLOAT
+gl.UNSIGNED_SHORT
+gl.UNSIGNED_INT
+gl.TRIANGLES
+gl.LINES
+gl.LEQUAL
+gl.LESS
+gl.SRC_ALPHA
+gl.ONE_MINUS_SRC_ALPHA
+
+# SpatialHash
+spatial.insert(id, x, y)
+spatial.update(id, x, y)
+spatial.remove(id)
+spatial.getInRadius(x, y, radius)
+spatial.clear()
+
+# Table Utility
+table.shuffle(tbl)
+table.getRandom(tbl)
+
+# Tween
+tween.to(obj, props, duration, easeName)
+tween.update(dt)
+
+
+tween.linear
+tween.easeInQuad
+tween.easeOutQuad
+tween.easeInOutQuad
+tween.easeInCubic
+tween.easeOutCubic
+tween.easeInOutCubic
+tween.easeInQuart
+tween.easeOutQuart
+tween.easeInOutQuart
+tween.easeOutBounce
+tween.onComplete
+tween._resume
+
+# Thread
+thread.start(func)
+thread.stop(co)
+thread.sleep(seconds)
+thread.tween(obj, duration, target_x, target_y)
+thread.wait_until(condition_func)
+
+# Joystick
+joystick.create(x, y, radius, knobRadius, bgTex, knobTex)
+joy:setVisuals(bgTex, knobTex)
+joy:setDynamic(enabled, areaX, areaY, areaW, areaH)
+joy:setDeadzone(val)
+joy:setAxis(axis)
+joy:setSpring(enabled, speed)
+joy:update()
+joy:draw(r, g, b, a)
+joy:getVector()
+joy:getDistance()
+joy:getAngle()
+joy:isActive()
+
+# JSON
+json.encode(value)
+json.decode(string)
+
+# Events / Plugin
+events.on(event_name, id, func)
+events.off(event_name, id)
+events.emit(event_name, ...)
+plugin.register(namespace, plugin_module)
+plugin.get(namespace)
+cat.events
+cat.plugin
+
+# Engine3D
+engine3d.camera
+engine3d.project(x, y, z)
+engine3d.drawTexturedCube(texture, x, y, z, size, rx, ry, rz)
+engine3d.loadOBJ(path)
+engine3d.drawOBJ(model, texture, x, y, z, scale, rx, ry, rz)
+
+# Retro3D
+retro.setMap(width, height, binaryDataString)
+retro.setBlock(x, y, value)
+retro.getBlock(x, y)
+retro.raycast(startX, startY, dirX, dirY, maxDist)
+retro.movePlayer(x, y, radius, dx, dy)
+retro.setWalls(texture_array)
+retro.setFloor(texture)
+retro.setCeiling(texture)
+retro.setSkybox(texture)
+retro.setFog(r, g, b, minDist, maxDist)
+retro.setFloorColor(r, g, b)
+retro.setCeilingColor(r, g, b)
+retro.setAmbientLight(r, g, b)
+retro.addPointLight(x, y, r, g, b, intensity, radius)
+retro.clearLights()
+retro.project(camX, camY, camZ, angle, pitch, fov, objX, objY, objZ, screenW, screenH)
+retro.drawRaycast(camX, camY, camZ, angle, pitch, fov)
+retro.drawMode7(camX, camY, camZ, angle, pitch, fov)
+
+# Internal Lua/Engine Metamethods
+__gc, __index, __mode -- Used internally for memory management and Lua Binding lifecycles

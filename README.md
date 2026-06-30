@@ -5,7 +5,7 @@
   Imagem larga (sugestão: 1280x640px ou 1200x300px), com o logo/nome da engine,
   salva em assets/banner.png. É a primeira coisa que quem abre o repositório vê.
 -->
-<img src="assets/banner.png" alt="Cat Engine Banner" width="100%">
+<img src="assets/bannr.png" alt="Cat Engine Banner" width="100%">
 
 # 🐾 Cat Engine
 
@@ -32,7 +32,7 @@ Desenvolvida em **Lua** e **C++**, a Cat Engine combina desempenho, simplicidade
   do Android + conversor online resolvem isso rápido.
 -->
 <div align="center">
-  <img src="assets/demo.gif" alt="Demonstração da Cat Engine em funcionamento" width="60%">
+  <img src="assets/cubo.gif" alt="Demonstração da Cat Engine em funcionamento" width="60%">
   <p><em>O Loader abrindo e executando um projeto da pasta catgame/.</em></p>
 </div>
 
@@ -43,7 +43,7 @@ Desenvolvida em **Lua** e **C++**, a Cat Engine combina desempenho, simplicidade
   Captura de tela estática da tela principal do Loader, salva em assets/interface.png.
 -->
 <div align="center">
-  <img src="assets/interface.png" alt="Interface do Loader da Cat Engine" width="80%">
+  <img src="assets/interface.jpg" alt="Interface do Loader da Cat Engine" width="80%">
   <p><em>A interface do Loader: selecione e rode seu projeto em catgame/ com um toque.</em></p>
 </div>
 
@@ -195,8 +195,8 @@ O app da Cat Engine instalado no Android não é apenas um motor invisível: ele
 - Exibir logs e informações básicas de execução durante o desenvolvimento
 
 <div align="center">
-  <img src="assets/loader_home.png" alt="Tela inicial do Loader" width="45%">
-  <img src="assets/loader_running.png" alt="Loader executando um jogo" width="45%">
+  <img src="assets/home.jpg" alt="Tela inicial do Loader" width="45%">
+  <img src="assets/game.jpg" alt="Loader executando um jogo" width="45%">
 </div>
 
 ### Ciclo de Vida do Jogo
